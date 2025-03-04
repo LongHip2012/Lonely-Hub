@@ -1,0 +1,700 @@
+shared.LoaderTitle = "If Script Has Bugs Pls Dms Me On Discord LongHipTg!";
+shared.LoaderKeyFrames = {
+    [1] = {
+        1,
+        10
+    },
+    [2] = {
+        2,
+        30
+    },
+    [3] = {
+        3,
+        60
+    },
+    [4] = {
+        2,
+        100
+    }
+};
+local v2 = {
+    LoaderData = {
+        Name = shared.LoaderTitle or "A Loader",
+        Colors = shared.LoaderColors or {
+            Main = Color3.fromRGB(0, 0, 0),
+            Topic = Color3.fromRGB(200, 200, 200),
+            Title = Color3.fromRGB(255, 255, 255),
+            LoaderBackground = Color3.fromRGB(40, 40, 40),
+            LoaderSplash = Color3.fromRGB(3, 252, 3)
+        }
+    },
+    Keyframes = shared.LoaderKeyFrames or {
+        [1] = {
+            1,
+            10
+        },
+        [2] = {
+            2,
+            30
+        },
+        [3] = {
+            3,
+            60
+        },
+        [4] = {
+            2,
+            100
+        }
+    }
+};
+local v3 = {
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = ""
+};
+function TweenObject(v178, v179, v180)
+    game.TweenService:Create(v178, TweenInfo.new(v179, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), v180):Play();
+end
+function CreateObject(v181, v182)
+    local v183 = Instance.new(v181);
+    local v184;
+    for v416, v417 in pairs(v182) do
+        if (v416 ~= "Parent") then
+            v183[v416] = v417;
+        else
+            v184 = v417;
+        end
+    end
+    v183.Parent = v184;
+    return v183;
+end
+local function v4(v186, v187)
+    local v188 = Instance.new("UICorner");
+    v188.CornerRadius = UDim.new(0, v186);
+    v188.Parent = v187;
+end
+local v5 = CreateObject("ScreenGui", {
+    Name = "Core",
+    Parent = game.CoreGui
+});
+local v6 = CreateObject("Frame", {
+    Name = "Main",
+    Parent = v5,
+    BackgroundColor3 = v2.LoaderData.Colors.Main,
+    BorderSizePixel = 0,
+    ClipsDescendants = true,
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(0, 0, 0, 0)
+});
+v4(12, v6);
+local v7 = CreateObject("ImageLabel", {
+    Name = "UserImage",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Image = "rbxassetid://15891628629",
+    Position = UDim2.new(0, 15, 0, 10),
+    Size = UDim2.new(0, 50, 0, 50)
+});
+v4(25, v7);
+local v8 = CreateObject("TextLabel", {
+    Name = "UserName",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Text = "Youtube:LONGHIP12",
+    Position = UDim2.new(0, 75, 0, 10),
+    Size = UDim2.new(0, 200, 0, 50),
+    Font = Enum.Font.GothamBold,
+    TextColor3 = v2.LoaderData.Colors.Title,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v9 = CreateObject("TextLabel", {
+    Name = "Top",
+    TextTransparency = 1,
+    Parent = v6,
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0, 30, 0, 70),
+    Size = UDim2.new(0, 301, 0, 20),
+    Font = Enum.Font.Gotham,
+    Text = "Loader",
+    TextColor3 = v2.LoaderData.Colors.Topic,
+    TextSize = 10,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v10 = CreateObject("TextLabel", {
+    Name = "Title",
+    Parent = v6,
+    TextTransparency = 1,
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0, 30, 0, 90),
+    Size = UDim2.new(0, 301, 0, 46),
+    Font = Enum.Font.Gotham,
+    RichText = true,
+    Text = "<b>" .. v2.LoaderData.Name .. "</b>",
+    TextColor3 = v2.LoaderData.Colors.Title,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v11 = CreateObject("Frame", {
+    Name = "BG",
+    Parent = v6,
+    AnchorPoint = Vector2.new(0.5, 0),
+    BackgroundTransparency = 1,
+    BackgroundColor3 = v2.LoaderData.Colors.LoaderBackground,
+    BorderSizePixel = 0,
+    Position = UDim2.new(0.5, 0, 0, 70),
+    Size = UDim2.new(0.8500000238418579, 0, 0, 24)
+});
+v4(8, v11);
+local v12 = CreateObject("Frame", {
+    Name = "Progress",
+    Parent = v11,
+    BackgroundColor3 = v2.LoaderData.Colors.LoaderSplash,
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    Size = UDim2.new(0, 0, 0, 24)
+});
+v4(8, v12);
+local v13 = CreateObject("TextLabel", {
+    Name = "StepLabel",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0.5, 0, 1, - 25),
+    Size = UDim2.new(1, - 20, 0, 20),
+    Font = Enum.Font.Gotham,
+    Text = "",
+    TextColor3 = v2.LoaderData.Colors.Topic,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Center,
+    AnchorPoint = Vector2.new(0.5, 0.5)
+});
+function UpdateStepText(v191)
+    v13.Text = v3[v191] or "" ;
+end
+function UpdatePercentage(v193, v194)
+    TweenObject(v12, 0.5, {
+        Size = UDim2.new(v193 / 100, 0, 0, 24)
+    });
+    UpdateStepText(v194);
+end
+TweenObject(v6, 0.25, {
+    Size = UDim2.new(0, 346, 0, 121)
+});
+wait();
+TweenObject(v9, 0.5, {
+    TextTransparency = 0
+});
+TweenObject(v10, 0.5, {
+    TextTransparency = 0
+});
+TweenObject(v11, 0.5, {
+    BackgroundTransparency = 0
+});
+TweenObject(v12, 0.5, {
+    BackgroundTransparency = 0
+});
+for v195, v196 in pairs(v2.Keyframes) do
+    wait(v196[1]);
+    UpdatePercentage(v196[2], v195);
+end
+UpdatePercentage(100, 4);
+TweenObject(v9, 0.5, {
+    TextTransparency = 1
+});
+TweenObject(v10, 0.5, {
+    TextTransparency = 1
+});
+TweenObject(v11, 0.5, {
+    BackgroundTransparency = 1
+});
+TweenObject(v12, 0.5, {
+    BackgroundTransparency = 1
+});
+wait(0.5);
+TweenObject(v6, 0.25, {
+    Size = UDim2.new(0, 0, 0, 0)
+});
+wait(0.25);
+v5:Destroy();
+-- spawn(function()
+--     while wait() do
+--         function print()
+--         end
+--         function warn()
+--         end
+--         function error()
+--         end
+--         debug.traceback = function()
+--             return "Traceback blocked";
+--         end;
+--         debug.info = function()
+--             return "Info blocked";
+--         end;
+--         local v420 = getrawmetatable(game);
+--         if (v420 and not v420.__metatable) then
+--             setreadonly(v420, false);
+--             local v658 = v420.__index;
+--             local v659 = v420.__newindex;
+--             v420.__index = function(v759, v760)
+--                 if ((v760 == "debug") or (v760 == "getrawmetatable")) then
+--                     error("Anti Skid: Tampering detected!");
+--                 end
+--                 return v658(v759, v760);
+--             end;
+--             v420.__newindex = function(v761, v762, v763)
+--                 if ((v762 == "debug") or (v762 == "getrawmetatable")) then
+--                     error("Anti Skid: Tampering detected!");
+--                 end
+--                 return v659(v761, v762, v763);
+--             end;
+--             setreadonly(v420, true);
+--         end
+--         local function v421()
+--             local v568 = {
+--                 "_G",
+--                 "debug",
+--                 "getgenv",
+--                 "getrawmetatable",
+--                 "setfenv",
+--                 "loadstring",
+--                 "hookfunction"
+--             };
+--             for v662, v663 in ipairs(v568) do
+--                 local v664, v665 = pcall(function()
+--                     return _G[v663];
+--                 end);
+--                 if (v664 and v665) then
+--                     error("Anti Skid: Environment tampering detected!");
+--                 end
+--             end
+--         end
+--         local function v422()
+--             local v569 = {
+--                 getrawmetatable,
+--                 setreadonly,
+--                 getgenv,
+--                 debug.getinfo,
+--                 debug.getregistry
+--             };
+--             for v666, v667 in ipairs(v569) do
+--                 if v667 then
+--                     error("Anti Skid: Hook tampering detected!");
+--                 end
+--             end
+--         end
+--         local v423 = game:FindService("HttpService");
+--         if v423 then
+--             v423.RequestAsync = function()
+--                 error("HTTP Requests Blocked");
+--             end;
+--             v423.GetAsync = function()
+--                 error("HTTP Get Blocked");
+--             end;
+--             v423.PostAsync = function()
+--                 error("HTTP Post Blocked");
+--             end;
+--         end
+--         function collectgarbage()
+--             error("GC Blocked");
+--         end
+--         os.time = function()
+--             error("OS Time Blocked");
+--         end;
+--         pcall(v421);
+--         pcall(v422);
+--     end
+-- end);
+
+local v22 = Instance.new("ScreenGui");
+local v23 = Instance.new("ImageButton");
+local v24 = Instance.new("UICorner");
+local v25 = Instance.new("ParticleEmitter");
+local v26 = game:GetService("TweenService");
+v22.Parent = game.CoreGui;
+v22.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+v23.Parent = v22;
+v23.BackgroundColor3 = Color3.fromRGB(0, 0, 0);
+v23.BorderSizePixel = 0;
+v23.Position = UDim2.new(0.120833337 - 0.1, 0, 0.0952890813 + 0.01, 0);
+v23.Size = UDim2.new(0, 50, 0, 50);
+v23.Draggable = true;
+v23.Image = "http://www.roblox.com/asset/?id=15891628629";
+v24.Parent = v23;
+v24.CornerRadius = UDim.new(0, 12);
+v25.Parent = v23;
+v25.LightEmission = 1;
+v25.Size = NumberSequence.new({
+    NumberSequenceKeypoint.new(0, 0.1),
+    NumberSequenceKeypoint.new(1, 0)
+game:GetService("VirtualInputManager"):SendKeyEvent(true,"RightShift",false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,"RightShift",false,game)
+});
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+Fluent:Notify({
+        Title = "Notification",
+        Content = "Loading...",
+        SubContent = "Waiting", -- Optional
+        Duration = 5 -- Set to nil to make the notification not disappear
+    })
+
+local Window = Fluent:CreateWindow({
+    Title = "Lonely Hub",
+    SubTitle = "by LongHip",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+local Tabs = {
+    Client = Window:AddTab({ Title = "Client", Icon = "" }),
+    Dev = Window:AddTab({ Title = "Developer", Icon = "" }),
+    Lplr = Window:AddTab({ Title = "Local Player", Icon = "" }),
+    Scr = Window:AddTab({ Title = "Script", Icon = "" }),
+    ScrP = Window:AddTab({ Title = "Script Paid", Icon = "" }),
+}
+
+    Tabs.Main:AddButton({
+        Title = "SynapseX",
+        Description = "Can Run Script But Use Your Executor's Api",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/LongHip2012/ScriptBloxFruit/refs/heads/main/SynapsexUi.lua"))()
+        end
+    })
+    
+    Tabs.Main:AddButton({
+        Title = "ArceusX",
+        Description = "Can Run Script But Use Your Executor's Api",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20X%20V3"))()
+        end
+    })
+    
+Tabs.Dev:AddButton({
+        Title = "Infinite Yield",
+        Description = "Command",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+        end
+    })
+    
+Tabs.Dev:AddButton({
+        Title = "Dark Dex Bypass",
+        Description = "Show Game File",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+        end
+    })
+  
+Tabs.Dev:AddButton({
+        Title = "Simple Spy Mobile",
+        Description = "Help u create own script or other",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/SimpleSpy/refs/heads/main/Mobile.lua"))()
+        end
+    })
+    
+Tabs.Dev:AddButton({
+        Title = "Simple Spy",
+        Description = "Help u create own script or other",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+        end
+    })
+    
+Tabs.Lplr:AddButton({
+        Title = "InfJump",
+        Description = "Infinite Jump",
+        Callback = function()
+local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+        end
+    })
+
+Tabs.Lplr:AddButton({
+        Title = "Fullbright",
+        Description = "",
+        Callback = function()
+             Lighting.Brightness = 2
+	Lighting.ClockTime = 14
+	Lighting.FogEnd = 100000
+	Lighting.GlobalShadows = false
+	Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+        end
+    })
+    
+    Tabs.Dev:AddButton({
+        Title = "Remove Fog",
+        Description = "",
+        Callback = function()
+            game.Lighting.FogEnd = 100000
+game.Lighting.FogStart = 0
+game.Lighting.ClockTime = 14
+game.Lighting.Brightness = 2
+game.Lighting.GlobalShadows = false
+        end
+    })
+    
+Tabs.Scr:AddButton({
+        Title = "Redz Hub",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+        end
+    })
+    
+Tabs.Scr:AddButton({
+        Title = "Teddy HOP",
+        Description = "HOP Sv",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletgojo/Haidepzai/refs/heads/main/Teddy-Premium"))()
+        end
+    })
+   
+Tabs.Scr:AddButton({
+        Title = "Bounty(key)",
+        Description = "",
+        Callback = function()
+            getgenv().config = {
+    ["Use Race"] = {
+        ["V4"] = true,
+        ["V3"] = true
+    },
+    ["BypassTp"] = false,
+    ["Info Screen"] = true,
+    ["SafeHealth"] = 4000,
+    ["Webhooks"] = {
+        ["Toggle Webhook"] = true,
+        ["Link Webhook"] = ""
+    },
+    ["White Screen"] = false,
+    ["SkipFruit"] = {
+        "Portal-Portal"
+    },
+    ["Skip Race V4 User"] = true,
+    ["Team"] = "Pirates",
+    ["MaxBountyHunt"] = 30000000,
+    ["MinBountyHunt"] = 0,
+    ["MainSkillToggle"] = {
+        ["Sword"] = {
+            ["Enable"] = true,
+            ["Skills"] = {
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.2
+                },
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.2
+                }
+            },
+            ["Delay"] = 1
+        },
+        ["Blox Fruit"] = {
+            ["Enable"] = true,
+            ["Skills"] = {
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 2
+                },
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["F"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["V"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                }
+            },
+            ["Delay"] = 2
+        },
+        ["Melee"] = {
+            ["Enable"] = true,
+            ["Skills"] = {
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 2.5
+                }
+            },
+            ["Delay"] = 1.75
+        },
+        ["Gun"] = {
+            ["Enable"] = true,
+            ["Skills"] = {
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                },
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0
+                }
+            },
+            ["Delay"] = 1
+        }
+    }
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LumosSera/Serra/refs/heads/main/Bounty.lua"))()
+        end
+    })
+    
+Tabs.Scr:AddButton({
+        Title = "W-azure",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-W-azure-blox-fruit-27834"))()
+        end
+    })
+
+Tabs.ScrP:AddButton({
+        Title = "Maru Hub",
+        Description = "",
+        Callback = function()
+            getgenv().Key = "MARU-NXXK2-Q4TG-S61Y-X42GY-XOZIG"
+            getgenv().id = "1187618840251740163"
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+        end
+    })
+    
+Tabs.ScrO:AddButton({
+        Title = "Maru Kaitun",
+        Description = "",
+        Callback = function()
+            repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+_G.Team = "Pirate" -- Marine / Pirate
+getgenv().Script_Mode = "Kaitun_Script"
+_G.MainSettings = {
+        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ["UseGun"] = true,
+        ['FPSBOOST'] = true, -- ภาพกาก
+        ["FPSLOCKAMOUNT"] = 60, -- จำนวน FPS
+        ['WhiteScreen'] = false, -- จอขาว
+        ['CloseUI'] = false, -- ปิด Ui
+        ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
+        ['AFKCheck'] = 150, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
+        ["LockFragments"] = 1500, -- ล็อคเงินม่วง
+        ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
+            [1] = "Dough-Dough",
+            [2] = "Dragon-Dragon"
+        }
+    }
+_G.Fruits_Settings = { -- ตั้งค่าผล
+    ['Main_Fruits'] = {'Dough-Dough'}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
+    ['Select_Fruits'] = {"Flame-Flame", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider", "Rumble-Rumble", "Magma-Magma", "Buddha-Buddha"} -- กินหรือซื้อตอนไม่มีผล
+}
+_G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
+    ['Rainbow_Haki'] = true,
+    ["MusketeerHat"] = true,
+    ["PullLever"] = true,
+    ['DoughQuests_Mirror'] = {
+        ['Enabled'] = true,
+        ['UseFruits'] = true
+    }        
+}
+_G.Races_Settings = { -- ตั้งค่าเผ่า
+    ['Race'] = {
+        ['EnabledEvo'] = true,
+        ["v2"] = true,
+        ["v3"] = true,
+        ["Races_Lock"] = {
+            ["Races"] = { -- Select Races U want
+                ["Mink"] = false,
+                ["Human"] = false,
+                ["Fishman"] = true
+            },
+            ["RerollsWhenFragments"] = 20000 -- Random Races When Your Fragments is >= Settings
+        }
+    }
+}
+_G.Settings_Melee = { -- หมัดที่จะทำ
+    ['Superhuman'] = true,
+    ['DeathStep'] = true,
+    ['SharkmanKarate'] = true,
+    ['ElectricClaw'] = true,
+    ['DragonTalon'] = true,
+    ['Godhuman'] = true
+}
+_G.FarmMastery_Settings = {
+    ['Melee'] = true,
+    ['Sword'] = true,
+    ['DevilFruits'] = true,
+    ['Select_Swords'] = {
+        ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
+        ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
+            "Saber",
+            "Buddy Sword"
+        }
+    }
+}
+_G.SwordSettings = { -- ดาบที่จะทำ
+    ['Saber'] = true,
+    ["Pole"] = true,
+    ['MidnightBlade'] = false,
+    ['Shisui'] = true,
+    ['Saddi'] = true,
+    ['Wando'] = true,
+    ['Yama'] = true,
+    ['Rengoku'] = false,
+    ['Canvander'] = false,
+    ['BuddySword'] = false,
+    ['TwinHooks'] = false,
+    ['HallowScryte'] = true,
+    ['TrueTripleKatana'] = true,
+    ['CursedDualKatana'] = true
+}
+_G.SharkAnchor_Settings = {
+    ["Enabled_Farm"] = true,
+    ['FarmAfterMoney'] = 2500000
+}
+_G.GunSettings = { -- ปืนที่จะทำ
+    ['Kabucha'] = true,
+    ['SerpentBow'] = false,
+    ['SoulGuitar'] = true
+}
+getgenv().Key = "MARU-NXXK2-Q4TG-S61Y-X42GY-XOZIG"
+getgenv().id = "1187618840251740163"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+        end
+    })
+    
+    Fluent:Notify({
+        Title = "Notification",
+        Content = "Script Loaded!",
+        SubContent = "Done", -- Optional
+        Duration = 5 -- Set to nil to make the notification not disappear
+    })
+    
