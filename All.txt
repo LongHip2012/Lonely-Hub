@@ -1,3 +1,17 @@
+repeat task.wait() until game:IsLoaded()
+print("Loading.....")
+notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
+notis.new("<Color=White>Thanks For Use Lonely Hub<Color=/>"):Display()
+wait(.2)
+notis.new("<Color=Blue>Owner: LongHip12 <Color=/>"):Display() 
+wait(.32)
+notis.new("<Color=Red>Discord: https://discord.gg/yVptwJPAcM<Color=/>"):Display()
+wait(.3)
+notis.new("<Color=Red>Use DeltaX For Best Expirence!<Color=/>"):Display() 
+wait(.3)
+notis.new("<Color=Yellow>Executor You Use:<Color=/> ".. identifyexecutor()):Display() 
+wait(.2)
+
 shared.LoaderTitle = "If Script Has Bugs Pls Dms Me On Discord LongHipTg!";
 shared.LoaderKeyFrames = {
     [1] = {
