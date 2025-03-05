@@ -401,7 +401,6 @@ local PG = LP.PlayerGui
 local RS = game:GetService("ReplicatedStorage")
 local RunS = game:GetService("RunService")
 local Loop = RunS.RenderStepped
-local Data = LP.Data
 local WS = game:GetService("Workspace")
 local VU = game:GetService("VirtualUser")
 local VIM = game:GetService("VirtualInputManager")
