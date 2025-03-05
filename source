@@ -393,42 +393,6 @@ v5:Destroy()
 --     end
 -- end);
 -- Function for HSV to RGB conversion
-local function HSVtoRGB(h, s, v)
-    local i = math.floor(h * 6)
-    local f = h * 6 - i
-    local p = v * (1 - s)
-    local q = v * (1 - f * s)
-    local t = v * (1 - (1 - f) * s)
-
-    local r, g, b
-    if i % 6 == 0 then
-        r, g, b = v, t, p
-    elseif i % 6 == 1 then
-        r, g, b = q, v, p
-    elseif i % 6 == 2 then
-        r, g, b = p, v, t
-    elseif i % 6 == 3 then
-        r, g, b = p, q, v
-    elseif i % 6 == 4 then
-        r, g, b = t, p, v
-    elseif i % 6 == 5 then
-        r, g, b = v, p, q
-    end
-
-    return Color3.new(r, g, b)
-end
-
--- Loop for rainbow effect
-spawn(
-    function()
-        local hue = 0
-        while true do
-            Toggle.TextColor3 = HSVtoRGB(hue, 1, 1)
-            hue = (hue + 0.01) % 1 -- Loop through colors
-            wait(0.05) -- Adjust speed of rainbow effect
-        end
-    end
-)
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager =
@@ -515,13 +479,6 @@ v23.MouseButton1Down:Connect(
         )
     end
 )
-if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
-    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
-end
-if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
-    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-end
-
 
 Fluent:Notify(
     {
