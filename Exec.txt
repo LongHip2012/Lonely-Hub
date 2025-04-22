@@ -1,0 +1,478 @@
+--[[
+
+██╗░░░░░░█████╗░██╗░░░░ ██╗░██████╗░██╗░░██╗██╗██████╗░░░░░██╗░░░░████╗░░░
+██║░░░░░██╔══██╗████╗░░ ██║██╔════╝░██║░░██║██║██╔══██╗░░████║░░██░░░░██╗░
+██║░░░░░██║░░██║██░░██╗ ██║██║░░██╗░███████║██║██████╔╝██░░██║░░░░░░░░██╝░
+██╚═══╗░██║░░██║██░░░ ████║██║░░╚██╗██╔══██║██║██╔═══╝░░░░░██║░░░░░░██╝░░░
+██████║░╚█████╔╝██░░░░░ ██╝╚██████╔╝██║░░██║██║██║░░░░░░░░░██╚═╗░░██╝░░░░░
+░░░░░░░░░╚════╝░░░░░░░░░░░░╚═════╝░ ╚═╝░░╚═╝╚═╝╚═╝░░░░░░░██████╝█████████░
+
+                                  █████████████████████████████████████████
+                                  █  Design by LongHip12                                      █
+                                  █  https://longhip2012.github.io/SouceRoblox  █
+                                  █     Source • Tool                                                       █
+                                  █████████████████████████████████████████
+                                  \______ Cảm ơn đã tin tưởng và sử dụng dịch vụ của chúng tôi ❤️
+
+-- Mã nguồn trên shop nhằm mục đích học tập và hoàn toàn miễn phí nên anh em không nên đem đi bán và lạm dụng source đi lùa gà nếu bị phát hiện thì bạn sẽ bị ban ip vĩnh viễn!
+-- Source trên shop anh em mua về là up lên github thì nhớ obf lại nhé và có thể tham khảo Moonsec V3 ; luaobfuscator.com ; Base64 v.v hoặc có tiền thì mua lura.ph nhé!
+-- Ủng hộ tôi bằng cách truy cập vào PlayerDuo của tôi tại https://linkbio.co/LongHip12 nhé.rất chân thành cảm ơn.
+]]--
+
+------------------------------------------------------------------------------------------------------------------------------Source------------------------------------------------------------------------------------------------------------------------------
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "AdvancedExecutorUI"
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 600, 0, 400)
+mainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.BorderSizePixel = 0
+mainFrame.ClipsDescendants = true
+mainFrame.Parent = screenGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 15)
+corner.Parent = mainFrame
+
+local titleBar = Instance.new("Frame")
+titleBar.Size = UDim2.new(1, 0, 0, 25)
+titleBar.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+titleBar.BorderSizePixel = 0
+titleBar.Parent = mainFrame
+
+local titleCorner = Instance.new("UICorner")
+titleCorner.CornerRadius = UDim.new(0, 15)
+titleCorner.Parent = titleBar
+
+local titleText = Instance.new("TextLabel")
+titleText.Size = UDim2.new(0, 200, 1, 0)
+titleText.Position = UDim2.new(0, 10, 0, 0)
+titleText.BackgroundTransparency = 1
+titleText.Text = "Lonely X Executor"
+titleText.Font = Enum.Font.Gotham
+titleText.TextSize = 16
+titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleText.Parent = titleBar
+
+local textEditor = Instance.new("TextBox")
+textEditor.Size = UDim2.new(1, -20, 0.9, -25)
+textEditor.Position = UDim2.new(0, 10, 0, 30)
+textEditor.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+textEditor.TextColor3 = Color3.fromRGB(255, 255, 255)
+textEditor.Text = "print(\"Lonely X executor\")"
+textEditor.TextWrapped = true
+textEditor.ClearTextOnFocus = false
+textEditor.Font = Enum.Font.Gotham
+textEditor.TextSize = 16
+textEditor.TextXAlignment = Enum.TextXAlignment.Left
+textEditor.TextYAlignment = Enum.TextYAlignment.Top
+textEditor.BackgroundTransparency = 0
+textEditor.BorderSizePixel = 0
+textEditor.MultiLine = true
+textEditor.Parent = mainFrame
+
+textEditor.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        textEditor.Text = textEditor.Text .. "\n"
+    end
+end)
+
+local minimizeButton = Instance.new("TextButton")
+minimizeButton.Size = UDim2.new(0, 25, 0, 25) -- Hình vuông bo tròn
+minimizeButton.Position = UDim2.new(1, -50, 0, 0)
+minimizeButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80) -- Màu xám
+minimizeButton.Text = "-"
+minimizeButton.Font = Enum.Font.Gotham
+minimizeButton.TextSize = 18
+minimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+minimizeButton.Parent = titleBar
+
+local minCorner = Instance.new("UICorner")
+minCorner.CornerRadius = UDim.new(0, 10)
+minCorner.Parent = minimizeButton
+
+-- Nút đóng (Close) - Hình vuông bo tròn màu xám
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 25, 0, 25) -- Hình vuông bo tròn
+closeButton.Position = UDim2.new(1, -25, 0, 0)
+closeButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80) -- Màu xám
+closeButton.Text = "X"
+closeButton.Font = Enum.Font.Gotham
+closeButton.TextSize = 18
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.Parent = titleBar
+
+local closeCorner = Instance.new("UICorner")
+closeCorner.CornerRadius = UDim.new(0, 10)
+closeCorner.Parent = closeButton
+
+-- Dịch chuyển mượt mà cho Frame chính
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local dragging, dragStart, startPos
+
+titleBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+        startPos = mainFrame.Position
+    end
+end)
+
+titleBar.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = false
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if dragging then
+        local mouse = UserInputService:GetMouseLocation()
+        local delta = mouse - dragStart
+        mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+local isMinimized = false
+minimizeButton.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+
+        local currentPos = mainFrame.Position
+
+        mainFrame.Size = UDim2.new(0, 600, 0, 25) -- Giữ chiều rộng 600, chiều cao 25
+        textEditor.Visible = false
+
+        mainFrame.Position = UDim2.new(currentPos.X.Scale, currentPos.X.Offset, currentPos.Y.Scale, currentPos.Y.Offset + 10)
+    else
+
+        mainFrame.Size = UDim2.new(0, 600, 0, 400)
+        textEditor.Visible = true
+
+        mainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+    end
+end)
+
+
+closeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+end)
+
+
+local toggleButton = Instance.new("ImageButton")
+toggleButton.Size = UDim2.new(0, 50, 0, 50)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+toggleButton.Image = "http://www.roblox.com/asset/?id=75876765129205"
+toggleButton.ScaleType = Enum.ScaleType.Fit
+toggleButton.Parent = screenGui
+
+local toggleCorner = Instance.new("UICorner")
+toggleCorner.CornerRadius = UDim.new(0, 10)
+toggleCorner.Parent = toggleButton
+
+local toggleDragging, toggleDragStart, toggleStartPos
+
+toggleButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        toggleDragging = true
+        toggleDragStart = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+        toggleStartPos = toggleButton.Position
+    end
+end)
+
+toggleButton.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        toggleDragging = false
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if toggleDragging then
+        local mouse = UserInputService:GetMouseLocation()
+        local delta = mouse - toggleDragStart
+        local screenSize = screenGui.AbsoluteSize
+        local newX = toggleStartPos.X.Offset + delta.X
+        local newY = toggleStartPos.Y.Offset + delta.Y
+        newX = math.clamp(newX, 0, screenSize.X - toggleButton.AbsoluteSize.X)
+        newY = math.clamp(newY, 0, screenSize.Y - toggleButton.AbsoluteSize.Y)
+        toggleButton.Position = UDim2.new(toggleStartPos.X.Scale, newX, toggleStartPos.Y.Scale, newY)
+    end
+end)
+
+local isVisible = true
+toggleButton.MouseButton1Click:Connect(function()
+    isVisible = not isVisible
+    mainFrame.Visible = isVisible
+end)
+
+local executeButton = Instance.new("TextButton")
+executeButton.Size = UDim2.new(0, 80, 0, 25)
+executeButton.Position = UDim2.new(0, 10, 1, -35)
+executeButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+executeButton.Text = "Execute"
+executeButton.Font = Enum.Font.Gotham
+executeButton.TextSize = 14
+executeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+executeButton.Parent = mainFrame
+
+local executeCorner = Instance.new("UICorner")
+executeCorner.CornerRadius = UDim.new(0, 10)
+executeCorner.Parent = executeButton
+
+local clearButton = Instance.new("TextButton")
+clearButton.Size = UDim2.new(0, 80, 0, 25)
+clearButton.Position = UDim2.new(0, 100, 1, -35)
+clearButton.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+clearButton.Text = "Clear"
+clearButton.Font = Enum.Font.Gotham
+clearButton.TextSize = 14
+clearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+clearButton.Parent = mainFrame
+
+local clearCorner = Instance.new("UICorner")
+clearCorner.CornerRadius = UDim.new(0, 10)
+clearCorner.Parent = clearButton
+
+local scriptHubButton = Instance.new("TextButton")
+scriptHubButton.Size = UDim2.new(0, 80, 0, 25)
+scriptHubButton.Position = UDim2.new(0, 190, 1, -35) -- Bên phải Clear
+scriptHubButton.BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+scriptHubButton.Text = "Script Hub"
+scriptHubButton.Font = Enum.Font.Gotham
+scriptHubButton.TextSize = 14
+scriptHubButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+scriptHubButton.Parent = mainFrame
+
+local scriptHubCorner = Instance.new("UICorner")
+scriptHubCorner.CornerRadius = UDim.new(0, 10)
+scriptHubCorner.Parent = scriptHubButton
+
+local spyButton = Instance.new("TextButton")
+spyButton.Size = UDim2.new(0, 80, 0, 25)
+spyButton.Position = UDim2.new(0, 280, 1, -35) -- Bên phải Script Hub
+spyButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+spyButton.Text = "Simple Spy"
+spyButton.Font = Enum.Font.Gotham
+spyButton.TextSize = 14
+spyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+spyButton.Parent = mainFrame
+
+local spyCorner = Instance.new("UICorner")
+spyCorner.CornerRadius = UDim.new(0, 10)
+spyCorner.Parent = spyButton
+
+spyButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+end)
+
+-- Nút esp
+local espButton = Instance.new("TextButton")
+espButton.Size = UDim2.new(0, 80, 0, 25)
+espButton.Position = UDim2.new(0, 370, 1, -35)
+espButton.BackgroundColor3 = Color3.fromRGB(50, 50, 150)
+espButton.Text = "Unnamed ESP"
+espButton.Font = Enum.Font.Gotham
+espButton.TextSize = 14
+espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+espButton.Parent = mainFrame
+
+local espCorner = Instance.new("UICorner")
+espCorner.CornerRadius = UDim.new(0, 10)
+espCorner.Parent = espButton
+
+espButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua"))()
+end)
+
+local injectedLabel = Instance.new("TextLabel")
+injectedLabel.Size = UDim2.new(0, 80, 0, 25)
+injectedLabel.Position = UDim2.new(1, -90, 1, -35)
+injectedLabel.BackgroundTransparency = 1
+injectedLabel.Text = "Injected"
+injectedLabel.Font = Enum.Font.Gotham
+injectedLabel.TextSize = 14
+injectedLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+injectedLabel.Parent = mainFrame
+
+clearButton.MouseButton1Click:Connect(function()
+    textEditor.Text = ""
+end)
+
+local function createUnrestrictedEnvironment()
+    local env = getfenv()
+    -- Thêm các hàm bị chặn trong Roblox (giả lập)
+    env.require = function(id)
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/some/repo/script.lua"))
+    end
+    env.getrawmetatable = function(t) return getmetatable(t) end
+    env.setfenv = setfenv or function(f, e) return f end
+    env.getfenv = getfenv or function(f) return env end
+    env.os = { time = os.time, date = os.date }
+    env.debug = { traceback = debug.traceback }
+    return env
+end
+
+executeButton.MouseButton1Click:Connect(function()
+    local scriptText = textEditor.Text
+    if scriptText and scriptText ~= "" then
+
+        local func, syntaxError = loadstring(scriptText)
+        if not func then
+            warn("Syntax Error: " .. syntaxError)
+            return
+        end
+
+        local unrestrictedEnv = createUnrestrictedEnvironment()
+        setfenv(func, unrestrictedEnv)
+
+        local success, runtimeError = pcall(function()
+            func() -- Chạy script
+        end)
+        if not success then
+            warn("Runtime Error: " .. runtimeError)
+        end
+    end
+end)
+
+local scriptHubFrame = Instance.new("Frame")
+scriptHubFrame.Size = UDim2.new(0, 150, 0, 150)
+scriptHubFrame.Position = UDim2.new(0, mainFrame.AbsolutePosition.X + 190, 0, mainFrame.AbsolutePosition.Y + 410)
+scriptHubFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+scriptHubFrame.BorderSizePixel = 0
+scriptHubFrame.Visible = false
+scriptHubFrame.Parent = screenGui
+
+local scriptHubFrameCorner = Instance.new("UICorner")
+scriptHubFrameCorner.CornerRadius = UDim.new(0, 10)
+scriptHubFrameCorner.Parent = scriptHubFrame
+
+local uncTestButton = Instance.new("TextButton")
+uncTestButton.Size = UDim2.new(0, 130, 0, 25)
+uncTestButton.Position = UDim2.new(0, 10, 0, 10)
+uncTestButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+uncTestButton.Text = "Unc Test"
+uncTestButton.Font = Enum.Font.Gotham
+uncTestButton.TextSize = 14
+uncTestButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+uncTestButton.Parent = scriptHubFrame
+
+local uncTestCorner = Instance.new("UICorner")
+uncTestCorner.CornerRadius = UDim.new(0, 10)
+uncTestCorner.Parent = uncTestButton
+
+local sUncTestButton = Instance.new("TextButton")
+sUncTestButton.Size = UDim2.new(0, 130, 0, 25)
+sUncTestButton.Position = UDim2.new(0, 10, 0, 40)
+sUncTestButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+sUncTestButton.Text = "sUnc Test"
+sUncTestButton.Font = Enum.Font.Gotham
+sUncTestButton.TextSize = 14
+sUncTestButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+sUncTestButton.Parent = scriptHubFrame
+
+local sUncTestCorner = Instance.new("UICorner")
+sUncTestCorner.CornerRadius = UDim.new(0, 10)
+sUncTestCorner.Parent = sUncTestButton
+
+local infiniteYieldButton = Instance.new("TextButton")
+infiniteYieldButton.Size = UDim2.new(0, 130, 0, 25)
+infiniteYieldButton.Position = UDim2.new(0, 10, 0, 70)
+infiniteYieldButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+infiniteYieldButton.Text = "Infinite Yield"
+infiniteYieldButton.Font = Enum.Font.Gotham
+infiniteYieldButton.TextSize = 14
+infiniteYieldButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+infiniteYieldButton.Parent = scriptHubFrame
+
+local infiniteYieldCorner = Instance.new("UICorner")
+infiniteYieldCorner.CornerRadius = UDim.new(0, 10)
+infiniteYieldCorner.Parent = infiniteYieldButton
+
+local dexExploitButton = Instance.new("TextButton")
+dexExploitButton.Size = UDim2.new(0, 130, 0, 25)
+dexExploitButton.Position = UDim2.new(0, 10, 0, 100)
+dexExploitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+dexExploitButton.Text = "Dex Exploit"
+dexExploitButton.Font = Enum.Font.Gotham
+dexExploitButton.TextSize = 14
+dexExploitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+dexExploitButton.Parent = scriptHubFrame
+
+local dexExploitCorner = Instance.new("UICorner")
+dexExploitCorner.CornerRadius = UDim.new(0, 10)
+dexExploitCorner.Parent = dexExploitButton
+
+-- Logic cho các nút trong Script Hub Frame
+uncTestButton.MouseButton1Click:Connect(function()
+    textEditor.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/unified-naming-convention/NamingStandard/refs/heads/main/UNCCheckEnv.lua'))()"
+end)
+
+sUncTestButton.MouseButton1Click:Connect(function()
+    textEditor.Text = "loadstring(game:HttpGet(\"https://gitlab.com/sens3/nebunu/-/raw/main/HummingBird8's_sUNC_yes_i_moved_to_gitlab_because_my_github_acc_got_brickedd/sUNCm0m3n7.lua\"))()"
+end)
+
+infiniteYieldButton.MouseButton1Click:Connect(function()
+    textEditor.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()"
+end)
+
+dexExploitButton.MouseButton1Click:Connect(function()
+    textEditor.Text = "loadstring(game:HttpGet(\"https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt\"))()"
+end)
+
+-- Logic nút Script Hub (toggle bảng nhỏ)
+local isScriptHubOpen = false
+scriptHubButton.MouseButton1Click:Connect(function()
+    isScriptHubOpen = not isScriptHubOpen
+    if isScriptHubOpen then
+        -- Cập nhật vị trí của scriptHubFrame dựa trên vị trí tuyệt đối của mainFrame và nút Script Hub
+        local hubPos = scriptHubButton.AbsolutePosition
+        scriptHubFrame.Position = UDim2.new(0, hubPos.X, 0, hubPos.Y + scriptHubButton.AbsoluteSize.Y + 5)
+    end
+    scriptHubFrame.Visible = isScriptHubOpen
+end)
+
+-- Hàm thêm hiệu ứng hover
+local function addHoverEffect(button, hoverColor)
+    button.MouseEnter:Connect(function()
+        button.BackgroundColor3 = hoverColor
+    end)
+    button.MouseLeave:Connect(function()
+        if button == minimizeButton then
+            button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        elseif button == closeButton then
+            button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        elseif button == toggleButton then
+            button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        elseif button == executeButton then
+            button.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+        elseif button == clearButton then
+            button.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+        elseif button == espButton then
+            button.BackgroundColor3 = Color3.fromRGB(50, 50, 150)
+        elseif button == spyButton then
+            button.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        elseif button == scriptHubButton then
+            button.BackgroundColor3 = Color3.fromRGB(70, 170, 70)
+        elseif button == uncTestButton or button == sUncTestButton or button == infiniteYieldButton or button == dexExploitButton then
+            button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        end
+    end)
+end
+
+-- Thêm hiệu ứng hover cho các nút
+addHoverEffect(minimizeButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(closeButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(toggleButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(executeButton, Color3.fromRGB(120, 120, 120))
+addHoverEffect(clearButton, Color3.fromRGB(180, 70, 70))
+addHoverEffect(espButton, Color3.fromRGB(70, 70, 200))
+addHoverEffect(spyButton, Color3.fromRGB(230, 0, 0))
+addHoverEffect(scriptHubButton, Color3.fromRGB(70, 170, 70))
+addHoverEffect(uncTestButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(sUncTestButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(infiniteYieldButton, Color3.fromRGB(100, 100, 100))
+addHoverEffect(dexExploitButton, Color3.fromRGB(100, 100, 100))
