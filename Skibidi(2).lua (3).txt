@@ -90,10 +90,7 @@ TextButton.MouseButton1Down:Connect(function()
         fadeInTween:Play()
     end
     faded = not faded
-VirtualInputManager:SendKeyEvent(false, "LeftControl", false, game)
-
-    VirtualInputManager:SendKeyEvent(true, "LeftControl", false, game)
-   
+    VirtualInputManager:SendKeyEvent(false, "LeftControl", false, game)
 end)
 
 -- // Fluent Installing \\ --
@@ -116,13 +113,15 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 local Tabs = {
-        Main0=Window:AddTab({ Title="Shop" }),
-        Main1=Window:AddTab({ Title="Blox Fruit" }),
-        Main2=Window:AddTab({ Title="Grow A Garden" }),
-        Main3=Window:AddTab({ Title="Dead rails" }),
-        Main4=Window:AddTab({ Title="Ink Game" }),
-       Main5=Window:AddTab({ Title="99 night in the forest " }),
-       Main6=Window:AddTab({ Title="Steal a Brainrot" }),
+        Main0=Window:AddTab({ Title="Tab Shop" }),
+        Main1=Window:AddTab({ Title="Tab Blox Fruit" }),
+        HOP= Window:AddTab({ Title="Tab HOP"})
+        Chest= Window:AddTab({ Title= "Tab Farm Chest"})
+        Main2=Window:AddTab({ Title="Tab Grow A Garden" }),
+        Main3=Window:AddTab({ Title="Tab Dead rails" }),
+        Main4=Window:AddTab({ Title="Tab Ink Game" }),
+        Main5=Window:AddTab({ Title="Tab 99 night in\n the forest" }),
+        Main6=Window:AddTab({ Title="Tab Steal a Brainrot" }),
 }
     Tabs.Main0:AddButton({
     Title = "Shop",
